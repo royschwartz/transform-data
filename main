@@ -19,7 +19,6 @@ for x in features:
         col_list.append((str(count) + x))
         count += 1
 
-
 def makedata(filename, label):
     global df
     df = pd.DataFrame(columns=col_list)
