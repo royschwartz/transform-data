@@ -42,13 +42,13 @@ def makedata(filename, label):
     df['label'] = label
 
 
-makedata("K:\\ola\\hand_highway.txt",0)
+makedata("hand_highway.txt",0)
 hand_highway = df.copy(deep= True)
 
-makedata("K:\\ola\\pocket_highway.txt", 1)
+makedata("pocket_highway.txt", 1)
 pocket_highway = df.copy(deep= True)
 
-makedata("K:\\ola\\home_use.txt", 2)
+makedata("home_use.txt", 2)
 df = pd.concat([pocket_highway, df, hand_highway], ignore_index=True)
 
 
