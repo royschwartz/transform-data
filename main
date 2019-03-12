@@ -5,8 +5,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import re
 
-#initialize column list, with correctly specified 
-
+#initialize desired column list
 features = ['meanSignalLenght', 'amplCor', 'syncVar', 'metr6.velSum']
 
 window_length = 4
@@ -19,6 +18,8 @@ for x in features:
         col_list.append((str(count) + x))
         count += 1
 
+
+#function to populate
 def makedata(filename, label):
     global df
     df = pd.DataFrame(columns=col_list)
@@ -71,7 +72,6 @@ from sklearn.ensemble import RandomForestClassifier
 clf_rf = RandomForestClassifier(n_estimators=100, random_state=12, class_weight='balanced')
 clf_rf.fit(x_train, y_train)
 
-# Fit on training data
 actual = y_val
 predictions = clf_rf.predict(x_val)
 
