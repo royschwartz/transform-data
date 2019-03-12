@@ -5,9 +5,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import re
 
-#initialize desired column list
+#initialize desired features (these are metrics the system generates based on info from the motion sensors)
 features = ['meanSignalLenght', 'amplCor', 'syncVar', 'metr6.velSum']
 
+#we need to be able to look how each metric changes over time 
 window_length = 4
 
 col_list = []
@@ -18,8 +19,9 @@ for x in features:
         col_list.append((str(count) + x))
         count += 1
 
+#now we have created a column list based on metrics fitting a chosen window length 
 
-#function to populate
+#function to populate df
 def makedata(filename, label):
     global df
     df = pd.DataFrame(columns=col_list)
@@ -42,8 +44,8 @@ def makedata(filename, label):
                     previous = match.group(1)
     df['label'] = label
 
-
-makedata("../file/hand_highway.txt",0)
+#files with chosen labels
+makedata("../file/hand_highway.txt", 0)
 hand_highway = df.copy(deep= True)
 
 makedata("../file/pocket_highway.txt", 1)
@@ -68,7 +70,7 @@ x_train, x_val, y_train, y_val = train_test_split(features, labels,
 
 from sklearn.ensemble import RandomForestClassifier
 
-# Create model with 100 trees
+#model 
 clf_rf = RandomForestClassifier(n_estimators=100, random_state=12, class_weight='balanced')
 clf_rf.fit(x_train, y_train)
 
