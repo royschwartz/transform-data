@@ -70,7 +70,7 @@ x_train, x_val, y_train, y_val = train_test_split(features, labels,
 
 from sklearn.ensemble import RandomForestClassifier
 
-#model 
+#we choose a model
 clf_rf = RandomForestClassifier(n_estimators=100, random_state=12, class_weight='balanced')
 clf_rf.fit(x_train, y_train)
 
